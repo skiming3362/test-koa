@@ -1,6 +1,9 @@
 const fn_hello = async (ctx, next) => {
     let name = ctx.params.name;
-    ctx.response.body = `<h1>Hello, ${name}!</h1>`;
+    ctx.response.body = JSON.stringify({
+        name
+    });
+    ctx.type = 'application/json';
 };
 
 module.exports = {
