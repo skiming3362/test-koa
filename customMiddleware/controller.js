@@ -32,7 +32,6 @@ function addControllers(router, dir) {
     }
 }
 
-
 module.exports = (dir) => {
     let controllers_dir = dir || 'controllers';
     addControllers(router, controllers_dir);
