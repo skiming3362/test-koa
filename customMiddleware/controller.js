@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const router = require('koa-router')();
 
 function addMapping(router, mapping) {
@@ -18,14 +19,15 @@ function addMapping(router, mapping) {
 }
 
 function addControllers(router, dir) {
-    let files = fs.readdirSync(`${__dirname}/${dir}`);
+    let c_dir = path.resolve(__dirname, `../${dir}`);
+    let files = fs.readdirSync(c_dir);
     let js_files = files.filter((f) => {
         return f.endsWith('.js');
     });
 
     for (let f of js_files) {
         console.log(`process controller: ${f}...`);
-        let mapping = require(`${__dirname}/${dir}/${f}`);
+        let mapping = require(`${c_dir}/${f}`);
         addMapping(router, mapping);
     }
 }

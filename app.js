@@ -1,13 +1,11 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
-const controller = require('./controller');
+const controller = require('./customMiddleware/controller');
+const logger = require('./customMiddleware/logger');
 
 const app = new Koa();
 
-app.use(async (ctx, next) => {
-    console.log(`Process ${ctx.method} ${ctx.url}...`); // 打印URL
-    await next(); // 调用下一个middleware
-});
+app.use(logger);
 app.use(bodyParser());
 app.use(controller());
 
