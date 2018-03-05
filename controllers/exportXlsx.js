@@ -1,5 +1,5 @@
 let xlsx = require('node-xlsx');
-let fs = require('fs');
+// let fs = require('fs');
 const exportXlsx = async (ctx, next) => {
 
     let data = ctx.request.body; // { series, categories }
@@ -15,7 +15,7 @@ const exportXlsx = async (ctx, next) => {
     }
 
     // generate file
-    let filename = `${data.title}.xlsx` || '表格';
+    let filename = `${data.title}.xlsx` || '表格.xlsx';
     let arr = [];
     arr[0] = JSON.parse(data.categories);
     for (const row of JSON.parse(data.series)) {
