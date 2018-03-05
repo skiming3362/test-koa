@@ -18,6 +18,6 @@ app.use(bodyParser());
 app.use(controller());
 app.use(options);
 
-app.listen(3000);
-console.log('app started ad port 3000...');
+app.listen(80);
+console.log('app started ad port 80...');
 
