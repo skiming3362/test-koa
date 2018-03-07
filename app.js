@@ -13,7 +13,9 @@ const app = new Koa();
 
 app.use(logger);
 app.use(cors);
-app.use(serve(root));
+app.use(serve(root, {
+    maxage: 1000 * 60 * 60 * 24 * 7
+}));
 app.use(bodyParser());
 app.use(controller());
 app.use(options);
