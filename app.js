@@ -16,7 +16,9 @@ app.use(cors);
 app.use(serve(root, {
     maxage: 1000 * 60 * 60 * 24 * 7
 }));
-app.use(bodyParser());
+app.use(bodyParser({
+    formLimit: '10mb'
+}));
 app.use(controller());
 app.use(options);
 
